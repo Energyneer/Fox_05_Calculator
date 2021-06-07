@@ -38,7 +38,18 @@ namespace Task5
             while (true)
             {
                 Console.Write("Enter expression: ");
-                Console.WriteLine("Result: " + MathParser.ParseSimpleExp(Console.ReadLine()));
+                string input = Console.ReadLine();
+                try
+                {
+                    if (input.Contains('(') || input.Contains(')'))
+                        throw new ArgumentException();
+
+                    Console.WriteLine("Result: " + MathParser.ParseSimpleExp(input));
+                }
+                catch
+                {
+                    Console.WriteLine("Incorrect expression!");
+                }
             }
         }
 
